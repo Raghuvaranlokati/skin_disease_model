@@ -166,7 +166,7 @@ The model evaluates **34 features**, standardizing mostly on a scale of `0` to `
 
 ## 👤 Author
 
-**Made with ❤️ by Raghuvaran**
+**Made with ❤️ by Raghuvaran Lokati**
 
 * **GitHub:** [@Raghuvaranlokati](https://github.com/Raghuvaranlokati)
 * **Project Link:** [https://github.com/Raghuvaranlokati/skin_disease_model](https://github.com/Raghuvaranlokati/skin_disease_model)
