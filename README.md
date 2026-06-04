@@ -1,89 +1,140 @@
-# Skin Disease Prediction Full-Stack Application
+<div align="center">
+  <img src="frontend/src/app/favicon.ico" alt="Logo" width="100" height="100">
+  <h1 align="center">Skin Disease Prediction Using Machine Learning 🔬🧑‍⚕️</h1>
 
-This is a full-stack web application designed for predicting skin diseases based on 34 patient features. It features a modern, responsive UI built with Next.js and a scalable backend built with FastAPI.
+  <p align="center">
+    <strong>A full-stack healthcare AI application to predict skin diseases with high accuracy based on 34 clinical and histopathological features.</strong>
+    <br />
+    <br />
+    <a href="https://github.com/Raghuvaranlokati/skin_disease_model"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="#">View Demo</a>
+    ·
+    <a href="https://github.com/Raghuvaranlokati/skin_disease_model/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Raghuvaranlokati/skin_disease_model/issues">Request Feature</a>
+  </p>
+  
+  <div>
+    <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+    <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+    <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face Space" />
+    <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+  </div>
+</div>
 
-## Project Structure
+<br />
 
-*   `frontend/`: A Next.js 15 application using the App Router, React, TypeScript, and Tailwind CSS.
-*   `backend/`: A FastAPI application serving a machine learning model (`skin_disease_model.pkl` and `scaler.pkl`).
+## 🌟 Overview
 
-## Local Development
+**Skin Disease Prediction AI** is an advanced, production-ready full-stack web application designed to assist medical professionals and individuals in diagnosing skin conditions. By leveraging a trained Machine Learning model on **34 distinct patient features** (including clinical symptoms and histopathological data), the system accurately predicts among 6 major skin disease classes:
+
+1. **Psoriasis**
+2. **Seborrheic Dermatitis**
+3. **Lichen Planus**
+4. **Pityriasis Rosea**
+5. **Chronic Dermatitis**
+6. **Pityriasis Rubra Pilaris**
+
+Built with modern web technologies, the platform features a highly responsive **Next.js** frontend and a blazingly fast **FastAPI** Python backend, seamlessly deployed across **Vercel** and **Hugging Face Spaces**.
+
+---
+
+## ✨ Key Features
+
+- **🤖 AI-Powered Diagnosis**: State-of-the-art scikit-learn model utilizing 34 parameters for precision predictions.
+- **⚡ Lightning Fast API**: Python FastAPI backend ensuring low-latency inference.
+- **🎨 Modern UI/UX**: Premium, accessible, and fully responsive user interface built with Tailwind CSS and Next.js App Router.
+- **🚀 Scalable Architecture**: Decoupled frontend and backend hosted on serverless architectures (Vercel & Hugging Face).
+- **🔒 Secure & Localized**: Zero patient data is stored; predictions are processed securely on the fly.
+- **📱 Mobile Optimized**: Beautifully renders on all device sizes from desktops to mobile phones.
+
+---
+
+## 🏗️ Tech Stack
+
+### Frontend (Client-Side)
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router, React, TypeScript)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **HTTP Client**: [Axios](https://axios-http.com/)
+- **Deployment**: [Vercel](https://vercel.com/)
+
+### Backend (Server-Side)
+- **Framework**: [FastAPI](https://fastapi.tiangolo.com/) (Python)
+- **Machine Learning**: [Scikit-Learn](https://scikit-learn.org/), Pandas, Joblib
+- **Containerization**: Docker
+- **Deployment**: [Hugging Face Spaces](https://huggingface.co/spaces)
+
+---
+
+## 🚀 Getting Started (Local Development)
+
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 *   Node.js (v18+)
 *   Python (3.9+)
 
-### Backend Setup
+### 1️⃣ Backend Setup
+Navigate to the backend directory and fire up the FastAPI server:
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+> The backend will be available at `http://localhost:8000`. 
+> Access the interactive Swagger API docs at `http://localhost:8000/docs`.
 
-1.  Navigate to the backend directory:
-    ```bash
-    cd backend
-    ```
-2.  Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-3.  Run the FastAPI server:
-    ```bash
-    uvicorn main:app --reload
-    ```
-    The backend will be available at `http://localhost:8000`. You can access the interactive API docs at `http://localhost:8000/docs`.
+### 2️⃣ Frontend Setup
+Open a new terminal, navigate to the frontend directory, and start the Next.js dev server:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+> The frontend will be available at `http://localhost:3000`.
 
-### Frontend Setup
+*Note: For local testing with the local backend, you can set `NEXT_PUBLIC_API_URL=http://localhost:8000` in a `frontend/.env.local` file.*
 
-1.  Navigate to the frontend directory:
-    ```bash
-    cd frontend
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Set the API URL for local development (optional, defaults to localhost). You can create a `.env.local` file:
-    ```env
-    NEXT_PUBLIC_API_URL=http://localhost:8000
-    ```
-4.  Run the development server:
-    ```bash
-    npm run dev
-    ```
-    The frontend will be available at `http://localhost:3000`.
+---
 
-## Deployment
+## 🌍 Deployment
 
-### Backend (Hugging Face Spaces)
+### Deploying the Backend to Hugging Face Spaces
+1. Create a new Space on [Hugging Face](https://huggingface.co/spaces).
+2. Choose **Docker** as the SDK.
+3. Upload the contents of the `backend/` directory (`main.py`, `requirements.txt`, `Dockerfile`, `.pkl` files).
+4. Hugging Face automatically builds and deploys your Dockerized ML API!
 
-The backend is configured to be easily deployed to Hugging Face Spaces using Docker.
+### Deploying the Frontend to Vercel
+1. Push your repository to GitHub.
+2. Go to [Vercel](https://vercel.com/) and Import the repository.
+3. Set the Root Directory to `frontend`.
+4. Add the Environment Variable: `NEXT_PUBLIC_API_URL` (Set this to your Hugging Face Space URL).
+5. Click **Deploy**!
 
-1.  Create a new Space on Hugging Face.
-2.  Choose "Docker" as the SDK.
-3.  Upload the contents of the `backend/` directory (including `main.py`, `requirements.txt`, `Dockerfile`, and the `.pkl` files) to the Space.
-4.  Hugging Face will automatically build and run the Docker container.
-5.  Note the public URL of your Space API (e.g., `https://your-username-space-name.hf.space`).
+---
 
-### Frontend (Vercel)
+## 📊 Dataset & Features
 
-1.  Push your repository to GitHub.
-2.  Log in to Vercel and create a new project.
-3.  Import the repository and set the Root Directory to `frontend`.
-4.  Add an Environment Variable:
-    *   Name: `NEXT_PUBLIC_API_URL`
-    *   Value: *The public URL of your deployed Hugging Face Space API.*
-5.  Deploy the project.
+The model evaluates **34 features**, standardizing mostly on a scale of `0` to `3` (0: Absent, 1: Mild, 2: Moderate, 3: Severe).
 
-## Features
+<details>
+<summary><strong>👉 Click here to view all 34 Clinical & Histopathological Features</strong></summary>
 
-The model uses the following 34 features to predict between 6 skin disease classes (Psoriasis, Seborrheic dermatitis, Lichen planus, Pityriasis rosea, Chronic dermatitis, Pityriasis rubra pilaris):
-
-1.  erythema (0-3)
-2.  scaling (0-3)
-3.  definite_borders (0-3)
-4.  itching (0-3)
-5.  koebner_phenomenon (0-3)
-6.  polygonal_papules (0-3)
-7.  follicular_papules (0-3)
-8.  oral_mucosal_involvement (0-3)
-9.  knee_and_elbow_involvement (0-3)
+1. erythema (0-3)
+2. scaling (0-3)
+3. definite_borders (0-3)
+4. itching (0-3)
+5. koebner_phenomenon (0-3)
+6. polygonal_papules (0-3)
+7. follicular_papules (0-3)
+8. oral_mucosal_involvement (0-3)
+9. knee_and_elbow_involvement (0-3)
 10. scalp_involvement (0-3)
 11. family_history (0-1)
 12. melanin_incontinence (0-3)
@@ -109,3 +160,20 @@ The model uses the following 34 features to predict between 6 skin disease class
 32. inflammatory_monoluclear_inflitrate (0-3)
 33. band_like_infiltrate (0-3)
 34. Age
+</details>
+
+---
+
+## 👤 Author
+
+**Made with ❤️ by Raghuvaran**
+
+* **GitHub:** [@Raghuvaranlokati](https://github.com/Raghuvaranlokati)
+* **Project Link:** [https://github.com/Raghuvaranlokati/skin_disease_model](https://github.com/Raghuvaranlokati/skin_disease_model)
+
+If you find this project useful or interesting, please consider giving it a ⭐️ on GitHub!
+
+---
+<div align="center">
+  <sub>Built for the future of Healthcare AI.</sub>
+</div>
