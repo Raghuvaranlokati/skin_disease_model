@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Loader2, CheckCircle2, AlertCircle, RefreshCw } from "lucide-react";
 
@@ -54,8 +54,21 @@ export default function PredictPage() {
   });
 
   const [loading, setLoading] = useState(false);
+  const [showSlowMessage, setShowSlowMessage] = useState(false);
   const [result, setResult] = useState<{ prediction: number; disease: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (loading) {
+      timer = setTimeout(() => {
+        setShowSlowMessage(true);
+      }, 5000);
+    } else {
+      setShowSlowMessage(false);
+    }
+    return () => clearTimeout(timer);
+  }, [loading]);
 
   const handleInputChange = (id: string, value: string) => {
     setFormData(prev => ({ ...prev, [id]: parseInt(value, 10) || 0 }));
@@ -150,6 +163,10 @@ export default function PredictPage() {
               <RefreshCw className="w-5 h-5" />
               New Prediction
             </button>
+
+            <div className="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 text-sm text-slate-400 dark:text-slate-500 flex items-center justify-center gap-1">
+              Made with ❤️ by <span className="font-medium text-slate-600 dark:text-slate-300">Raghuvaran</span>
+            </div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl overflow-hidden">
@@ -184,7 +201,7 @@ export default function PredictPage() {
               </div>
             </div>
 
-            <div className="px-6 md:px-8 py-5 bg-slate-50 dark:bg-slate-950/50 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+            <div className="px-6 md:px-8 py-5 bg-slate-50 dark:bg-slate-950/50 border-t border-slate-200 dark:border-slate-800 flex flex-col items-end gap-3">
               <button
                 type="submit"
                 disabled={loading}
@@ -199,6 +216,11 @@ export default function PredictPage() {
                   "Predict Disease"
                 )}
               </button>
+              {showSlowMessage && (
+                <div className="text-sm text-slate-500 dark:text-slate-400 italic animate-in fade-in slide-in-from-bottom-2">
+                  😴 Our backend is sleeping, wait some seconds! 🚀
+                </div>
+              )}
             </div>
           </form>
         )}
